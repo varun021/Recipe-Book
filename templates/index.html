@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Font Awesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h1>Recipe Search</h1>
+    <div class="search">
+    <form method="post">
+        <input type="text" name="query" placeholder="Search for recipes" required>
+        <button type="submit">Search</button>
+    </form>
+    </div>
+
+    {% if results %}
+        <h2>Results for "{{ query }}"</h2>
+        <div class="recipe-container">
+            {% for hit in results %}
+                <div class="recipe-card" data-recipe-id="{{ loop.index }}">
+                    <h3>{{ hit.recipe.label }}</h3>
+                    <img src="{{ hit.recipe.image }}" alt="{{ hit.recipe.label }} Image" width="150" height="150">
+                    <p><strong>Source:</strong> {{ hit.recipe.source }}</p>
+                    <p><strong>URL:</strong> <a href="{{ hit.recipe.url }}" target="_blank">View Recipe</a></p>
+                    <p><strong>Calories:</strong> {{ hit.recipe.calories }} kcal</p>
+                    <h4>Ingredients</h4>
+                    <ul>
+                        {% for ingredient in hit.recipe.ingredients %}
+                            <li>{{ ingredient.text }}</li>
+                        {% endfor %}
+                    </ul>
+                    <button class="delete-button" onclick="deleteRecipe({{ loop.index }})">X</button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <script>
+        function deleteRecipe(recipeId) {
+            fetch(`/api/delete_recipe/${recipeId}`, {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.deleted) {
+                    const card = document.querySelector(`[data-recipe-id="${recipeId}"]`);
+                    if (card) {
+                        card.remove();
+                    }
+                } else {
+                    console.error('Failed to delete recipe');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+    <!-- Updated Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; {{ current_year }} Recipe Search App</p>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
