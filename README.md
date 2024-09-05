@@ -61,8 +61,10 @@ Recipe Book is a web application that allows users to search for recipes using a
      ```
 
 5. Run the application:
-  
+   ```
    python app.py
+   
+   ```
   
 
 6. Open a web browser and go to `http://localhost:5000`
