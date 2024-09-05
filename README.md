@@ -1,64 +1,129 @@
-# Recipe Search Application
+# Recipe Book
 
-This is a Flask-based web application that allows users to search for recipes using a third-party API. The application takes a user query (e.g., "chicken pasta") and displays a list of recipe results fetched from the API. The application also includes a route to simulate the deletion of a recipe.
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Setup and Installation](#setup-and-installation)
+5. [Usage](#usage)
+6. [API Integration](#api-integration)
+7. [Frontend](#frontend)
+8. [Backend](#backend)
+9. [Error Handling](#error-handling)
+10. [Future Enhancements](#future-enhancements)
+11. [Contributing](#contributing)
+12. [License](#license)
+
+## Introduction
+
+Recipe Book is a web application that allows users to search for recipes using an external API. Users can view detailed recipe information, including ingredients, nutritional facts, and cooking instructions. The application also provides features like recipe deletion and social media sharing.
 
 ## Features
-- Search for recipes by entering a query.
-- Display a list of recipes fetched from a public recipe API.
-- Simulate recipe deletion with an API route.
+
+- Recipe search functionality
+- Detailed recipe view with ingredients and nutritional information
+- Delete recipe option
+- Responsive design for various screen sizes
+- Social media integration in footer
+- Dynamic content loading
+
+## Technologies Used
+
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Python with Flask framework
+- **API**: Edamam Recipe Search API
+- **Additional Libraries**: Font Awesome for icons
+
+## Setup and Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/recipe-book.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd recipe-book
+   ```
+
+3. Install required Python packages:
+   ```
+   pip install -r requirements.txt
+   ```
+
+4. Set up environment variables:
+   - Create a `.env` file in the root directory
+   - Add your API credentials:
+     ```
+     API_ID=your_api_id
+     API_KEY=your_api_key
+     API_URL=https://api.edamam.com/search
+     ```
+
+5. Run the application:
   
-## Table of Contents
-- [Features](#features)
-- [Technologies](#technologies)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-  - [Clone the Repository](#clone-the-repository)
-  - [Setting up Environment Variables](#setting-up-environment-variables)
-  - [Installing Dependencies](#installing-dependencies)
-  - [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [API](#api)
-- [License](#license)
+   python app.py
+  
 
-## Technologies
-- **Python**: Flask, Requests
-- **HTML**: For the frontend rendering of search results
-- **API**: A third-party recipe API (e.g., Edamam)
+6. Open a web browser and go to `http://localhost:5000`
 
-## Prerequisites
-Before running the project, make sure you have the following installed:
-- Python 3.x
-- pip (Python package manager)
-- A GitHub account (to clone the repository)
+## Usage
 
+1. On the homepage, enter a recipe name or ingredients in the search bar.
+2. Click the "Search" button or press Enter.
+3. Browse through the search results.
+4. Click on a recipe card to view more details.
+5. Use the delete button (X) to remove a recipe from the results.
 
-### Explanation of the Key Sections:
+## API Integration
 
-1. **Project Overview**: Briefly describes what the project does and its features.
-   
-2. **Technologies**: Lists the major technologies used, including Python (Flask and Requests), HTML for templates, and the third-party recipe API.
+This application uses the Edamam Recipe Search API. To use the API:
 
-3. **Getting Started**: 
-   - Instructions on how to set up the project (cloning the repo, setting up API keys, installing dependencies, and running the application).
-   - Specific instructions for environment variables and `config.py`.
+1. Sign up for an account at [Edamam](https://developer.edamam.com/edamam-recipe-api)
+2. Obtain your API ID and API Key
+3. Replace the placeholder credentials in the `.env` file with your actual credentials
 
-4. **Project Structure**: Provides an overview of how the files are organized within the project.
+## Frontend
 
-5. **API**: Describes the available API endpoints for searching and deleting recipes.
+The frontend is built with HTML, CSS, and JavaScript. Key components include:
 
-6. **License**: Specifies the license under which the project is released (MIT in this case, but you can change it).
+- Responsive design using CSS flexbox
+- Dynamic content loading with JavaScript
+- Font Awesome icons for enhanced UI
 
-### Before Committing:
-- Make sure to create a `.gitignore` file to exclude sensitive files like `config.py`.
-- If your project does not yet have a `requirements.txt`, you can create it using:
-   ```bash
-   pip freeze > requirements.txt
+## Backend
 
+The backend is powered by Flask, a Python web framework. It handles:
 
-## Getting Started
+- API requests to Edamam
+- Routing and serving HTML templates
+- Processing form submissions
+- Implementing the delete functionality
 
-### Clone the Repository
-First, clone the project repository from GitHub to your local machine:
-```bash
-git clone https://github.com/varun021/Recipe-Book.git
-cd Recipe-Book
+## Error Handling
+
+- The application includes basic error handling for API requests
+- User-friendly messages are displayed when no results are found
+- Console logging for debugging purposes
+
+## Future Enhancements
+
+- User accounts and recipe saving functionality
+- Advanced search filters (dietary restrictions, cuisine type, etc.)
+- Recipe rating system
+- Implement proper logging instead of print statements
+- Add unit tests for backend functionality
+
+## Contributing
+
+Contributions to improve Recipe Book are welcome. Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` file for more information.
