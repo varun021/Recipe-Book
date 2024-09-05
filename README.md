@@ -31,6 +31,30 @@ Before running the project, make sure you have the following installed:
 - pip (Python package manager)
 - A GitHub account (to clone the repository)
 
+
+### Explanation of the Key Sections:
+
+1. **Project Overview**: Briefly describes what the project does and its features.
+   
+2. **Technologies**: Lists the major technologies used, including Python (Flask and Requests), HTML for templates, and the third-party recipe API.
+
+3. **Getting Started**: 
+   - Instructions on how to set up the project (cloning the repo, setting up API keys, installing dependencies, and running the application).
+   - Specific instructions for environment variables and `config.py`.
+
+4. **Project Structure**: Provides an overview of how the files are organized within the project.
+
+5. **API**: Describes the available API endpoints for searching and deleting recipes.
+
+6. **License**: Specifies the license under which the project is released (MIT in this case, but you can change it).
+
+### Before Committing:
+- Make sure to create a `.gitignore` file to exclude sensitive files like `config.py`.
+- If your project does not yet have a `requirements.txt`, you can create it using:
+   ```bash
+   pip freeze > requirements.txt
+
+
 ## Getting Started
 
 ### Clone the Repository
