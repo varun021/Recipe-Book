@@ -38,7 +38,7 @@ Recipe Book is a web application that allows users to search for recipes using a
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/recipe-book.git
+   git clone https://github.com/varun021/recipe-book.git
    ```
 
 2. Navigate to the project directory:
